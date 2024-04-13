@@ -1,5 +1,4 @@
 import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
-import { {{name}}Adapter } from "./src/infrastructure/adapters/{{name}}/{{name}}.adapter";
 
 @Injectable()
 export class {{name}}Port {

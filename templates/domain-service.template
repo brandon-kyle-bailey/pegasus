@@ -1,6 +1,5 @@
-import { QueryHandler } from "@brandon-kyle-baile/pegasus/decorator";
-import { Inject, Injectable } from "@brandon-kyle-baile/pegasus/di";
-import { IDomainService } from "@brandon-kyle-baile/pegasus/interface";
+import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
+import { IDomainService } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
 export class {{name}}QueryDomainService implements IDomainService {

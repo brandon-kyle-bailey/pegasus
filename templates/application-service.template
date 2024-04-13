@@ -1,6 +1,6 @@
-import { QueryHandler } from "@brandon-kyle-baile/pegasus/decorator";
-import { Inject, Injectable } from "@brandon-kyle-baile/pegasus/di";
-import { IApplicationService } from "@brandon-kyle-baile/pegasus/interface";
+import { QueryHandler } from "@brandon-kyle-bailey/pegasus";
+import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
+import { IApplicationService } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
 // @QueryHandler({{name}}Query)
