@@ -1,0 +1,10 @@
+import { Injectable } from "@brandon-kyle-bailey/pegasus/di";
+
+@Injectable()
+export class {{name}}Adapter {
+    constructor() {}
+
+    execute(): any {
+        // some response here
+    }
+}

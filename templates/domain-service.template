@@ -1,0 +1,11 @@
+import { QueryHandler } from "@brandon-kyle-baile/pegasus/decorator";
+import { Inject, Injectable } from "@brandon-kyle-baile/pegasus/di";
+import { IDomainService } from "@brandon-kyle-baile/pegasus/interface";
+
+@Injectable()
+export class {{name}}QueryDomainService implements IDomainService {
+    constructor() {
+    }
+    async execute(input: any): Promise<any> {
+    }
+}

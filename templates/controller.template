@@ -1,0 +1,19 @@
+import { Inject, Injectable, IController } from "@brandon-kyle-bailey/pegasus";
+
+@Injectable()
+export class {{name}}Controller implements IController {
+    constructor(
+        // @Inject(QueryBus) private readonly bus: QueryBus
+        // @Inject(CommandBus) private readonly bus: CommandBus
+        ) {
+    }
+    async execute(dto: {{name}}RequestDto): Promise<{{name}}ResponseDto> {
+        try {
+            // const event = Command.create()
+            // const event = Query.create()
+            // return await this.bus.execute(event);
+        } catch (error) {
+            throw new Error(`${error}`);
+        }
+    }
+}

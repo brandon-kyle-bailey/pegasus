@@ -1,0 +1,16 @@
+import { QueryHandler } from "@brandon-kyle-baile/pegasus/decorator";
+import { Inject, Injectable } from "@brandon-kyle-baile/pegasus/di";
+import { IApplicationService } from "@brandon-kyle-baile/pegasus/interface";
+
+@Injectable()
+// @QueryHandler({{name}}Query)
+// @CommandHandler({{name}}Query)
+export class {{name}}QueryApplicationService implements IApplicationService {
+    constructor(
+        @Inject({{name}}Port) readonly port: {{name}}Port,
+        @Inject({{name}}DomainService) readonly domainService: {{name}}DomainService
+        ) {
+    }
+    async execute(query: {{name}}Query): Promise<any> {
+    }
+}

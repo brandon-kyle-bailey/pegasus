@@ -1,0 +1,11 @@
+import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus/di";
+import { {{name}}Adapter } from "./src/infrastructure/adapters/{{name}}/{{name}}.adapter";
+
+@Injectable()
+export class {{name}}Port {
+    constructor(@Inject({{name}}Adapter) private readonly adapter: {{name}}Adapter) {
+    }
+    execute() {
+        return this.adapter.execute();
+    }
+}

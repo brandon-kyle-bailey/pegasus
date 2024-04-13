@@ -1,0 +1,12 @@
+import { Command, CommandProps } from "@brandon-kyle-bailey/pegasus/ddd";
+
+export class {{name}}Command extends Command {
+  readonly message: string;
+  private constructor(props: CommandProps<{{name}}Command>) {
+    super(props);
+    this.message = props.message;
+  }
+  static create(props: CommandProps<{{name}}Command>): {{name}}Command {
+    return new {{name}}Command(props);
+  }
+}

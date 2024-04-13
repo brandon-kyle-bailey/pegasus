@@ -1,0 +1,12 @@
+import { Query, QueryProps } from "@brandon-kyle-bailey/pegasus/ddd";
+
+export class {{name}}Query extends Query {
+  // readonly message: string;
+  private constructor(props: QueryProps<{{name}}Query>) {
+    super(props);
+    // this.message = props.message;
+  }
+  static create(props: QueryProps<{{name}}Query>): {{name}}Query {
+    return new {{name}}Query(props);
+  }
+}
