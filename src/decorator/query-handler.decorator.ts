@@ -1,5 +1,5 @@
-import { CustomEventEmitter } from "../cqrs/event-emitter.cqrs";
-import { IQueryHandler } from "../interface/query-handler.interface";
+import { CustomEventEmitter } from "../cqrs";
+import { IQueryHandler } from "../interface";
 
 export function QueryHandler(query: any) {
   return function <T extends { new (...args: any[]): IQueryHandler }>(

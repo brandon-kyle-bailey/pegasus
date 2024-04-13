@@ -1,4 +1,4 @@
-import { Query } from '../ddd/query.base';
+import { Query } from "../ddd";
 
 export interface IQueryHandler {
   execute(query: Query): any;

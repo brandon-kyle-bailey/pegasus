@@ -1,5 +1,5 @@
-import { CustomEventEmitter } from "../cqrs/event-emitter.cqrs";
-import { ICommandHandler } from "../interface/command-handler.interface";
+import { CustomEventEmitter } from "../cqrs";
+import { ICommandHandler } from "../interface";
 
 export function CommandHandler(command: any) {
   return function <T extends { new (...args: any[]): ICommandHandler }>(

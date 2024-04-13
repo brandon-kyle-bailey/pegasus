@@ -1,4 +1,4 @@
-import { Command } from '../ddd/command.base';
+import { Command } from "../ddd";
 
 export interface ICommandHandler {
   execute(command: Command): any;

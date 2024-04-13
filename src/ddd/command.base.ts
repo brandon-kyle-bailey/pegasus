@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { CommandMetadata } from '../interface/command-metadata.interface';
+import { CommandMetadata } from '../interface';
 
 export type CommandProps<T> = Omit<T, 'id' | 'metadata'> & Partial<Command>;
 

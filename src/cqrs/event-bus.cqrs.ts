@@ -1,8 +1,7 @@
-import { Command } from '../ddd/command.base';
-import { Query } from '../ddd/query.base';
+import { Command, Query } from '../ddd';
 import { Inject } from '../di/inject.di';
 import { Injectable } from '../di/injectable.di';
-import { IEventBus } from '../interface/event-bus.interface';
+import { IEventBus } from '../interface';
 import { CustomEventEmitter } from './event-emitter.cqrs';
 
 

@@ -1,4 +1,4 @@
-import { Command, CommandProps } from "@brandon-kyle-bailey/pegasus/ddd";
+import { Command, CommandProps } from "@brandon-kyle-bailey/pegasus";
 
 export class {{name}}Command extends Command {
   readonly message: string;

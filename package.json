@@ -1,31 +1,43 @@
 {
   "name": "@brandon-kyle-bailey/pegasus",
-  "version": "0.0.1",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.0.12",
+  "description": "A lightweight, platform agnostic framework for Dependency Injection, event based domain driven architecture with CQRS",
+  "main": "dist/src/index.js",
+  "bin": {
+    "pegasus": "dist/cli.js"
+  },
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "tsc && npx copyfiles ./templates ./dist",
-    "pegasus": "node dist/cli.js"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 80,
-    "trailingComma": "es5",
-    "arrowParens": "always"
-  },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "typescript",
+    "npm",
+    "package",
+    "cqrs",
+    "ddd",
+    "domain",
+    "driven",
+    "design",
+    "events",
+    "event",
+    "architecture",
+    "framework",
+    "dependency",
+    "injection"
+  ],
+  "author": "brandon-kyle-bailey",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@types/uuid": "^9.0.8",
-    "@types/yargs": "^17.0.32",
     "copyfiles": "^2.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@types/node": "^20.12.7",
+    "@types/uuid": "^9.0.8",
+    "@types/yargs": "^17.0.32",
     "events": "^3.3.0",
     "reflect-metadata": "^0.2.2",
     "uuid": "^9.0.1",

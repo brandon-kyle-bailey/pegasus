@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "esModuleInterop": true,"forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["./dist", "**/node_modules/*", "**/*.test.ts", "templates"]
+}

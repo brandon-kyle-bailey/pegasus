@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { QueryMetadata } from '../interface/query-metadata.interface';
+import { QueryMetadata } from '../interface';
 
 export type QueryProps<T> = Omit<T, 'id' | 'metadata'> & Partial<Query>;
 

@@ -1,4 +1,4 @@
-import { ModuleMetadata } from "../interface/module-metadata.interface";
+import { ModuleMetadata } from "../interface";
 
 export class Container {
   private instances: Map<any, any> = new Map();

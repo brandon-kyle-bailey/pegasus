@@ -1,4 +1,4 @@
-import { ModuleMetadata } from "../interface/module-metadata.interface";
+import { ModuleMetadata } from "../interface";
 import { Container } from "./container.di";
 
 export function Module(metadata: ModuleMetadata): ClassDecorator {
