@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
 import { IDomainService } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
-export class {{name}}QueryDomainService implements IDomainService {
+export class {{name}}DomainService implements IDomainService {
     constructor() {
     }
     async execute(input: any): Promise<any> {
