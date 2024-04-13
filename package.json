@@ -1,0 +1,30 @@
+{
+  "name": "pegasus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 80,
+    "trailingComma": "es5",
+    "arrowParens": "always"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/uuid": "^9.0.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "events": "^3.3.0",
+    "reflect-metadata": "^0.2.2",
+    "uuid": "^9.0.1"
+  }
+}
