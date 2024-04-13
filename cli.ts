@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import fs from 'fs';
@@ -9,14 +8,14 @@ import { dirname } from 'path';
 const templatesDir = path.join(__dirname, '..', 'templates');
 
 const typePaths: {[key: string]: string} = {
-    'dto': "src\\interface\\dtos",
-    'controller': "src\\interface\\controller",
-    'command': "src\\interface\\command",
-    'query': "src\\interface\\query",
-    'application-service': "src\\core\\application\\services",
-    'domain-service': "src\\core\\domain\\services",
-    'port': "src\\core\\application\\ports",
-    'adapter': "src\\infrastructure\\adapters",
+    'dto': "src/interface/dtos",
+    'controller': "src/interface/controller",
+    'command': "src/interface/command",
+    'query': "src/interface/query",
+    'application-service': "src/core/application/services",
+    'domain-service': "src/core/domain/services",
+    'port': "src/core/application/ports",
+    'adapter': "src/infrastructure/adapters",
 }
 
 function convertToKebabCase(str: string): string {
@@ -53,9 +52,7 @@ yargs(hideBin(process.argv))
   }, function (argv) {
     const { type, name } = argv;
     const fileName = `${name}.${type}.ts`;
-
     const filePath = `${process.cwd()}/${typePaths[type!]}/${convertToKebabCase(name!)}/${convertToKebabCase(fileName)}`;
-    console.log(filePath);
     // Call createFile with the correct parameters
     createFile(type!, filePath, name!);
   })
