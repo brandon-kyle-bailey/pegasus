@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
+import { Injectable } from "@brandon-kyle-bailey/pegasus";
 import { IDomainService } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
