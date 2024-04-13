@@ -54,7 +54,7 @@ yargs(hideBin(process.argv))
     const { type, name } = argv;
     const fileName = `${name}.${type}.ts`;
 
-    const filePath = `${process.cwd()}/showcase/${typePaths[type!]}/${convertToKebabCase(name!)}/${convertToKebabCase(fileName)}`;
+    const filePath = `${process.cwd()}/${typePaths[type!]}/${convertToKebabCase(name!)}/${convertToKebabCase(fileName)}`;
     console.log(filePath);
     // Call createFile with the correct parameters
     createFile(type!, filePath, name!);

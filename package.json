@@ -1,6 +1,6 @@
 {
   "name": "@brandon-kyle-bailey/pegasus",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A lightweight, platform agnostic framework for Dependency Injection, event based domain driven architecture with CQRS",
   "main": "dist/src/index.js",
   "bin": {
