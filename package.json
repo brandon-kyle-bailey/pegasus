@@ -1,12 +1,12 @@
 {
   "name": "@brandon-kyle-bailey/pegasus",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A lightweight, platform agnostic framework for Dependency Injection, event based domain driven architecture with CQRS",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "bin": {
     "pegasus": "dist/cli.js"
   },
-  "types": "dist/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -30,8 +30,6 @@
   "author": "brandon-kyle-bailey",
   "license": "ISC",
   "devDependencies": {
-    "copyfiles": "^2.4.1",
-    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {

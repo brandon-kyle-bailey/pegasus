@@ -6,10 +6,11 @@
     "module": "commonjs",
     "declaration": true,
     "emitDeclarationOnly": false,
-    "esModuleInterop": true,"forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "outDir": "dist"
   },
-  "include": ["./**/*"],
-  "exclude": ["./dist", "**/node_modules/*", "**/*.test.ts", "templates"]
+  "include": ["src/**/*", "cli.ts"],
+  "exclude": ["dist/*", "node_modules/*", "templates/*"]
 }
