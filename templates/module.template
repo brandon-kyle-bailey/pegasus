@@ -1,0 +1,8 @@
+import { Module } from "@brandon-kyle-bailey/pegasus";
+
+@Module({
+  imports: [],
+  providers: [],
+  controllers: [],
+})
+export default class {{name}}Module {}
