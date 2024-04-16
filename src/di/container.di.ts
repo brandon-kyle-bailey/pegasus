@@ -1,9 +1,15 @@
 import { ReflectMetadataEnum } from "../enum/reflect-metadata.enum";
 import { ILogger, ModuleMetadata } from "../interface";
 
+enum DependencyInterfaceType {
+  VALUE = "value",
+  CLASS = "class",
+}
+
 interface DependencyInterface {
   key: any;
   instance: any;
+  type?: DependencyInterfaceType;
 }
 
 export class Container {
@@ -21,14 +27,20 @@ export class Container {
     if (typeof target === "object" && "key" in target && "instance" in target) {
       return target;
     }
-    if (
-      typeof target === "object" &&
-      "provide" in target &&
-      "useClass" in target
-    ) {
-      return { key: target.provide, instance: target.useClass };
+    if (typeof target === "object" && "provide" in target) {
+      return {
+        key: target.provide,
+        instance: "useClass" in target ? target.useClass : target.useValue,
+        type:
+          "useClass" in target
+            ? DependencyInterfaceType.CLASS
+            : DependencyInterfaceType.VALUE,
+      };
     }
-    return { key: target, instance: target };
+    return {
+      key: target,
+      instance: target,
+    };
   }
 
   private _initializeModules(modules: any[]): void {
@@ -127,14 +139,31 @@ export class Container {
       dependency.instance
     );
     if (!this._instances.has(dependency.key)) {
-      const params =
-        Reflect.getMetadata(
-          ReflectMetadataEnum.DESIGN_PARAMTYPES,
-          dependency.instance
-        ) || [];
-      const dependencies = params.map((param: any) => this.resolve(param));
-      const instance = new dependency.instance(...dependencies);
-      this._instances.set(dependency.key, instance);
+      if (
+        "type" in dependency &&
+        dependency.type === DependencyInterfaceType.VALUE
+      ) {
+        this._instances.set(dependency.key, dependency.instance);
+      } else {
+        const params =
+          Reflect.getMetadata(
+            ReflectMetadataEnum.DESIGN_PARAMTYPES,
+            dependency.instance
+          ) || [];
+        const dependencies = params.map((param: any) => {
+          if (
+            typeof param === "function" &&
+            param.prototype &&
+            param !== Object
+          ) {
+            return this.resolve(param);
+          }
+          return param;
+        });
+
+        const instance = new dependency.instance(...dependencies);
+        this._instances.set(dependency.key, instance);
+      }
     }
   }
 

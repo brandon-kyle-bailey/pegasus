@@ -1,23 +1,27 @@
-import { Injectable } from "../di";
 import { IConfigService } from "../interface";
 
-@Injectable()
-export class ConfigServie implements IConfigService {
-  private _env: { [key: string]: any } = {};
-  constructor(initConfig: { [key: string]: any }) {
-    this._env = initConfig;
-  }
-  get<T>(key: string): T {
-    return this._env[key];
+export class ConfigService implements IConfigService {
+  private readonly config: Record<string, any>;
+
+  constructor(options: Record<string, any> = {}) {
+    this.config = { ...options };
   }
   getOrThrow<T>(key: string): T {
-    const val = this._env[key];
-    if (val) {
-      throw new Error(`${key} does not exist`);
+    const value = this.get<T>(key);
+    if (!value) {
+      throw new Error(`${key} does not exist in environment`);
     }
-    return val;
+    return value;
   }
   set<T>(key: string, value: T): void {
-    this._env[key] = value;
+    this.config[key] = value;
+  }
+
+  get<T>(key: string): T {
+    return this.config[key] as T;
+  }
+
+  env(): Record<string, any> {
+    return this.config;
   }
 }

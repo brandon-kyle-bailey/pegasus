@@ -1,3 +1,4 @@
+import { ConfigService } from "../common/config-service.common";
 import { PegasusLogger } from "../common/logger.common";
 import { ReflectMetadataEnum } from "../enum/reflect-metadata.enum";
 import { ModuleMetadata } from "../interface";
@@ -19,7 +20,8 @@ export interface ModuleConfig {
 
 export class PegasusFactory {
   static create(T: any, config?: ModuleConfig): Container {
-    const logger = new PegasusLogger({ debug: config?.debug ?? false });
+    const configService = new ConfigService({ debug: config?.debug ?? false });
+    const logger = new PegasusLogger(configService);
     const start = new Date().getTime();
     logger.info(`[ ${T.name} ] Loading Dependencies...`);
     const container = new Container([T], logger);

@@ -1,11 +1,14 @@
-import { Injectable } from "../di";
+import { Inject, Injectable } from "../di";
 import { ILogger } from "../interface/logger.interface";
+import { ConfigService } from "./config-service.common";
 
 @Injectable()
 export class PegasusLogger implements ILogger {
   private _isDebug: boolean;
-  constructor(deps?: { debug: boolean }) {
-    this._isDebug = deps?.debug || false;
+  constructor(
+    @Inject(ConfigService) protected readonly configService: ConfigService
+  ) {
+    this._isDebug = this.configService.get<boolean>("debug") || false;
   }
   debug(message: string, ...args: any[]): void {
     if (this._isDebug) {
