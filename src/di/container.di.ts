@@ -24,22 +24,36 @@ export class Container {
   }
 
   private _generateDependencyInterface(target: any): DependencyInterface {
-    if (typeof target === "object" && "key" in target && "instance" in target) {
+    if (
+      typeof target === "object" &&
+      "key" in target &&
+      "instance" in target &&
+      "type" in target
+    ) {
       return target;
     }
     if (typeof target === "object" && "provide" in target) {
-      return {
-        key: target.provide,
-        instance: "useClass" in target ? target.useClass : target.useValue,
-        type:
-          "useClass" in target
-            ? DependencyInterfaceType.CLASS
-            : DependencyInterfaceType.VALUE,
-      };
+      if ("useClass" in target) {
+        return {
+          key: target.provide,
+          instance: target.useClass,
+          type: DependencyInterfaceType.CLASS,
+        };
+      } else {
+        return {
+          key: target.provide,
+          instance: target.useValue,
+          type: DependencyInterfaceType.VALUE,
+        };
+      }
     }
     return {
       key: target,
       instance: target,
+      type:
+        typeof target === "function" && target.prototype && target !== Object
+          ? DependencyInterfaceType.CLASS
+          : DependencyInterfaceType.VALUE,
     };
   }
 
@@ -139,10 +153,7 @@ export class Container {
       dependency.instance
     );
     if (!this._instances.has(dependency.key)) {
-      if (
-        "type" in dependency &&
-        dependency.type === DependencyInterfaceType.VALUE
-      ) {
+      if (dependency.type === DependencyInterfaceType.VALUE) {
         this._instances.set(dependency.key, dependency.instance);
       } else {
         const params =
@@ -151,16 +162,9 @@ export class Container {
             dependency.instance
           ) || [];
         const dependencies = params.map((param: any) => {
-          if (
-            typeof param === "function" &&
-            param.prototype &&
-            param !== Object
-          ) {
-            return this.resolve(param);
-          }
-          return param;
+          const dep = this._generateDependencyInterface(param);
+          return this.resolve(dep.key);
         });
-
         const instance = new dependency.instance(...dependencies);
         this._instances.set(dependency.key, instance);
       }
@@ -186,7 +190,7 @@ export class Container {
       !this._exports.has(dependency.key)
     ) {
       throw new Error(
-        `Dependency ${dependency.key} not found in the container.`
+        `Dependency ${dependency.key} not found in the container. Are you missing a provider?`
       );
     }
     return this._instances.get(dependency.key) || dependency;
