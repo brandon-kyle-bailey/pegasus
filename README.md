@@ -5,13 +5,13 @@ A lightweight, platform agnostic framework for Dependency Injection, event based
 ## Installation
 
 ```ts
-npm install @produce8/pegasus
+npm install @brandon-kyle-bailey/pegasus
 ```
 
 or
 
 ```ts
-yarn add @produce8/pegasus
+yarn add @brandon-kyle-bailey/pegasus
 ```
 
 ## Examples
@@ -23,7 +23,11 @@ Defining an Injectable provider
 ```ts
 // some-injectable.application-service.ts
 
-import { Inject, Injectable, IApplicationService } from "@produce8/pegasus";
+import {
+  Inject,
+  Injectable,
+  IApplicationService,
+} from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
 export class SomeInjectableApplicationService implements IApplicationService {
@@ -43,7 +47,7 @@ export class SomeInjectableApplicationService implements IApplicationService {
 Defining an injectable controller
 
 ```ts
-import { IController, Inject, Injectable } from "@produce8/pegasus";
+import { IController, Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
 export class SomeInjectableController implements IController {
@@ -70,7 +74,7 @@ Defining a module
 ```ts
 // app.module.ts
 
-import { Module } from "@produce8/pegasus";
+import { Module } from "@brandon-kyle-bailey/pegasus";
 ...
 
 @Module({
@@ -85,7 +89,7 @@ Resolving and invoking dependencies
 
 ```ts
 ...
-import { PegasusFactory } from "@produce8/pegasus";
+import { PegasusFactory } from "@brandon-kyle-bailey/pegasus";
 
 const bootstrap = async () => {
   const app = PegasusFactory.create(AppModule, { debug: true });
