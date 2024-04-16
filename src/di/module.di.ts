@@ -22,7 +22,7 @@ export class PegasusFactory {
     const logger = new PegasusLogger({ debug: config?.debug ?? false });
     const start = new Date().getTime();
     logger.info(`[ ${T.name} ] Loading Dependencies...`);
-    const container = new Container([T]);
+    const container = new Container([T], logger);
     const end = new Date().getTime();
     logger.info(`[ ${T.name} ] Dependencies loaded...`, `${end - start}ms`);
     return container;
