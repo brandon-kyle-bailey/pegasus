@@ -97,8 +97,11 @@ export class Container {
         dependency.instance
       );
 
-      if (metadata) {
-        this._initializeModules([dependency.instance]);
+      if (metadata && metadata.exports) {
+        for (const provider of metadata.exports) {
+          this._initializeInstance(provider);
+        }
+        this._initializeInstance(dependency.instance);
       }
     } else {
       this._initializeInstance(dependency.instance);
