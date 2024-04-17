@@ -291,6 +291,22 @@ const configService = app.resolve<ConfigService>(ConfigService);
 configService.set("some_key", "some_value");
 ```
 
+A ConfigModule also exists to inject an environment during bootstrap and expose a globally available ConfigService
+scoped to the given module.
+
+```ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({ debug: true, endpoint: "https.google.com" }),
+  ],
+  providers: [],
+  controllers: [ImporterAppController],
+})
+export default class ImporterAppModule {}
+```
+
+The controller can then inject the ConfigService without needing to define it as a provider.
+
 ### Interface Imports
 
 Interface keys can be used to provide dependencies
