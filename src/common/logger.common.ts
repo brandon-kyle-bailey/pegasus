@@ -12,7 +12,7 @@ export class PegasusLogger implements ILogger {
   }
   debug(message: string, ...args: any[]): void {
     if (this._isDebug) {
-      console.log(
+      console.debug(
         `[ Pegasus ] - [ ${new Date().toISOString()} [ DEBUG [ ${message} ] ] ]`,
         args
       );
@@ -20,14 +20,14 @@ export class PegasusLogger implements ILogger {
   }
   info(message: string, ...args: any[]): void {
     if (this._isDebug) {
-      console.log(
+      console.info(
         `[ Pegasus ] - [ ${new Date().toISOString()} [ INFO [ ${message} ] ] ]`,
         args
       );
     }
   }
   error(message: string, ...args: any[]): void {
-    console.log(
+    console.error(
       `[ Pegasus ] - [ ${new Date().toISOString()} [ ERROR [ ${message} ] ] ]`,
       args
     );

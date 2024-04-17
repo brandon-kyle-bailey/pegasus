@@ -1,5 +1,8 @@
-import 'reflect-metadata';
+import "reflect-metadata";
+import { ReflectMetadataEnum } from "../enum";
 
-export const Injectable = (): ClassDecorator => {
-  return (target: any) => {};
-};
+export function Injectable(): ClassDecorator {
+  return (target: any) => {
+    Reflect.defineMetadata(ReflectMetadataEnum.DESIGN_INJECTABLE, true, target);
+  };
+}

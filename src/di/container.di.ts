@@ -9,7 +9,7 @@ enum DependencyInterfaceType {
 interface DependencyInterface {
   key: any;
   instance: any;
-  type?: DependencyInterfaceType;
+  type: DependencyInterfaceType;
 }
 
 export class Container {
@@ -134,6 +134,18 @@ export class Container {
     }
   }
 
+  private _isInjectable(item: any): boolean {
+    const dependency = this._generateDependencyInterface(item);
+    this.logger.info(
+      `[ _isInjectable ] ${dependency.key} Is injectable...`,
+      dependency.instance
+    );
+    return Reflect.hasMetadata(
+      ReflectMetadataEnum.DESIGN_INJECTABLE,
+      dependency.instance
+    );
+  }
+
   private _isModule(item: any): boolean {
     const dependency = this._generateDependencyInterface(item);
     this.logger.info(
@@ -152,6 +164,11 @@ export class Container {
       `[ _initializeInstance ] ${dependency.key} Initializing dependency...`,
       dependency.instance
     );
+    if (!this._isInjectable(dependency)) {
+      const message = `[ _initializeInstance ] ${dependency.key} Does not support injection. Ensure proper use of @Injectable().`;
+      this.logger.error(message);
+      throw new Error(message);
+    }
     if (!this._instances.has(dependency.key)) {
       if (dependency.type === DependencyInterfaceType.VALUE) {
         this._instances.set(dependency.key, dependency.instance);
@@ -189,9 +206,9 @@ export class Container {
       !this._instances.has(dependency.key) &&
       !this._exports.has(dependency.key)
     ) {
-      throw new Error(
-        `Dependency ${dependency.key} not found in the container. Are you missing a provider?`
-      );
+      const message = `[ resolve ] Dependency ${dependency.key} not found in the container. Are you missing a provider?`;
+      this.logger.error(message);
+      throw new Error(message);
     }
     return this._instances.get(dependency.key) || dependency;
   }
