@@ -1,4 +1,4 @@
-import { Query, QueryProps } from "@produce8/pegasus";
+import { Query, QueryProps } from "@brandon-kyle-bailey/pegasus";
 
 export class {{name}}Query extends Query {
   // readonly message: string;

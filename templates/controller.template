@@ -1,4 +1,4 @@
-import { Inject, Injectable, IController } from "@produce8/pegasus";
+import { Inject, Injectable, IController } from "@brandon-kyle-bailey/pegasus";
 
 @Injectable()
 export class {{name}}Controller implements IController {

@@ -1,4 +1,4 @@
-import { Module } from "@produce8/pegasus";
+import { Module } from "@brandon-kyle-bailey/pegasus";
 
 @Module({
   imports: [],
