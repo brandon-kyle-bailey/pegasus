@@ -1,5 +1,5 @@
-import { Injectable } from "@brandon-kyle-bailey/pegasus";
-import { IDomainService } from "@brandon-kyle-bailey/pegasus";
+import { Injectable } from "@produce8/pegasus";
+import { IDomainService } from "@produce8/pegasus";
 
 @Injectable()
 export class {{name}}DomainService implements IDomainService {

@@ -1,4 +1,4 @@
-import { Injectable } from "@brandon-kyle-bailey/pegasus";
+import { Injectable } from "@produce8/pegasus";
 
 @Injectable()
 export class {{name}}Adapter {

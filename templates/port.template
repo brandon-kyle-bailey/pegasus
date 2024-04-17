@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@brandon-kyle-bailey/pegasus";
+import { Inject, Injectable } from "@produce8/pegasus";
 
 @Injectable()
 export class {{name}}Port {
