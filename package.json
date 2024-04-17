@@ -1,6 +1,6 @@
 {
   "name": "@produce8/pegasus",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "A lightweight, platform agnostic framework for Dependency Injection, event based domain driven architecture with CQRS",
   "main": "dist/src/index.js",
   "bin": {
