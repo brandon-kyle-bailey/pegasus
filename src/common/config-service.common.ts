@@ -1,5 +1,7 @@
+import { Injectable } from "../di";
 import { IConfigService } from "../interface";
 
+@Injectable()
 export class ConfigService implements IConfigService {
   private readonly config: Record<string, any>;
 

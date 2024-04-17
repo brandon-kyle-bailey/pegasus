@@ -137,9 +137,15 @@ export class Container {
   private _isInjectable(item: any): boolean {
     const dependency = this._generateDependencyInterface(item);
     this.logger.info(
-      `[ _isInjectable ] ${dependency.key} Is injectable...`,
+      `[ _isInjectable ] ${dependency.key} Validating ${dependency.type} is injectable...`,
       dependency.instance
     );
+    if (
+      this._isModule(dependency) ||
+      dependency.type === DependencyInterfaceType.VALUE
+    ) {
+      return true;
+    }
     return Reflect.hasMetadata(
       ReflectMetadataEnum.DESIGN_INJECTABLE,
       dependency.instance
